@@ -12,8 +12,13 @@ setup(
     description='Implementation of data structures and algorithms in python',
     long_description=long_description,
     long_description_content_type="text/markdown",
-    package_dir={'': 'al_struct'},
-    packages=['al_struct', 'utils', 'algorithms', 'data_structures', 'data_structures.lists'],
+    packages=[
+        'al_struct',
+        'al_struct.utils',
+        'al_struct.algorithms',
+        'al_struct.data_structures',
+        'al_struct.data_structures.lists'
+    ],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
