@@ -11,6 +11,11 @@ class Node:
         self._data = data
         self._next = next_node
 
+    def __eq__(self, other):
+        if isinstance(other, Node):
+            return self.data == other.data
+        return False
+
     @property
     def data(self):
         return self._data
