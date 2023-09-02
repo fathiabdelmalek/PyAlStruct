@@ -4,7 +4,6 @@ class Node:
     def __init__(self, data=None, next_node: 'Node' = None):
         """
         Initialize a new node.
-
         :param data: The data to be stored in the node.
         :param next_node: The next node in the linked structure.
         """
@@ -13,7 +12,7 @@ class Node:
 
     def __eq__(self, other):
         if isinstance(other, Node):
-            return self.data == other.data
+            return self.data == other.data and self.next == other.next
         return False
 
     @property
@@ -29,7 +28,7 @@ class Node:
         return self._next
 
     @next.setter
-    def next(self, ptr: 'Node') -> None:
-        if not isinstance(ptr, Node):
-            raise TypeError("The pointer should be a Node")
+    def next(self, ptr: 'Node'):
+        if not isinstance(ptr, (Node, type(None))):
+            raise TypeError("The pointer should be a Node or None")
         self._next = ptr

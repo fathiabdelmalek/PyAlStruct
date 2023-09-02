@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='PyAlStruct',
-    version='0.1.0',
+    version='0.2.0',
     author='fathi',
     author_email='abdelmalek.fathi.2001@gmail.com',
     url='https://github.com/fathiabdelmalek/PyAlStruct',
@@ -20,6 +20,7 @@ setup(
         'al_struct.data_structures.lists'
     ],
     classifiers=[
+        "Development Status :: 1 - Planning",
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
