@@ -3,7 +3,7 @@ from al_struct.utils.nodes import Node
 
 
 class SinglyLinkedList:
-    """A singly linked list data structure."""
+    """Singly linked list data structure."""
 
     def __init__(self):
         """Initialize an empty singly linked list."""
@@ -11,23 +11,23 @@ class SinglyLinkedList:
 
     def __str__(self):
         values = []
-        tmp = self._head
-        while tmp:
-            values.append(str(tmp.data))
-            tmp = tmp.next
-        del tmp
+        temp = self._head
+        while temp:
+            values.append(str(temp.data))
+            temp = temp.next
+        del temp
         return " -> ".join(values)
 
     def __repr__(self):
-        return f"SinglyLinkedList({str(self)})"
+        return f"PyAlStruct.SinglyLinkedList({str(self)})"
 
     def __len__(self):
         """Return len(self)"""
         size = 0
-        tmp = self._head
-        while tmp:
+        temp = self._head
+        while temp:
             size += 1
-            tmp = tmp.next
+            temp = temp.next
         return size
 
     def __iter__(self):
@@ -51,7 +51,7 @@ class SinglyLinkedList:
         """
         return self._head is None
 
-    def prepend(self, data) -> None:
+    def prepend(self, data):
         """
         Add a new node with data to the beginning of the list.
         :param data: The data to be added to the list.
@@ -60,7 +60,7 @@ class SinglyLinkedList:
         node.next = self._head
         self._head = node
 
-    def append(self, data) -> None:
+    def append(self, data):
         """
         Add a new node with data to the end of the list.
         :param data: The data to be added to the list.
@@ -69,10 +69,10 @@ class SinglyLinkedList:
         if not self._head:
             self._head = node
             return
-        tmp = self._head
-        while tmp.next:
-            tmp = tmp.next
-        tmp.next = node
+        temp = self._head
+        while temp.next:
+            temp = temp.next
+        temp.next = node
 
     def get_head(self):
         """
@@ -137,7 +137,7 @@ class SinglyLinkedList:
             index += 1
         raise NodeNotFoundException(data)
 
-    def delete(self, data) -> None:
+    def delete(self, data):
         """
         Delete the first occurrence of data in the linked list.
         :param data: The data to be deleted

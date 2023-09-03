@@ -7,3 +7,13 @@ class NodeNotFoundException(Exception):
 class EmptyListException(Exception):
     def __init__(self):
         super().__init__("List is empty")
+
+
+class EmptyStackException(Exception):
+    def __init__(self):
+        super().__init__("Stack is empty")
+
+
+class EmptyQueueException(Exception):
+    def __init__(self):
+        super().__init__("Queue is empty")
