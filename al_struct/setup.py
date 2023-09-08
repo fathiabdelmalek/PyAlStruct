@@ -5,20 +5,15 @@ with open("README.md", "r") as fh:
 
 setup(
     name='PyAlStruct',
-    version='0.3.0',
+    version='0.4.0',
     author='fathi',
     author_email='abdelmalek.fathi.2001@gmail.com',
     url='https://github.com/fathiabdelmalek/PyAlStruct',
     description='Implementation of data structures and algorithms in python',
     long_description=long_description,
     long_description_content_type="text/markdown",
-    packages=[
-        'al_struct',
-        'al_struct.utils',
-        'al_struct.algorithms',
-        'al_struct.data_structures',
-        'al_struct.data_structures.lists'
-    ],
+    packages=['utils', 'algorithms', 'algorithms.sort', 'data_structures', 'data_structures.lists',
+              'data_structures.queues', 'data_structures.stacks'],
     classifiers=[
         "Development Status :: 1 - Planning",
         "Programming Language :: Python :: 3",
