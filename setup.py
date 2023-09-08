@@ -12,8 +12,14 @@ setup(
     description='Implementation of data structures and algorithms in python',
     long_description=long_description,
     long_description_content_type="text/markdown",
-    packages=['utils', 'algorithms', 'algorithms.sort', 'data_structures', 'data_structures.lists',
-              'data_structures.queues', 'data_structures.stacks'],
+    packages=['al_struct.utils',
+              'al_struct.algorithms',
+              'al_struct.algorithms.sort',
+              'al_struct.data_structures',
+              'al_struct.data_structures.lists',
+              'al_struct.data_structures.queues',
+              'al_struct.data_structures.stacks'
+              ],
     classifiers=[
         "Development Status :: 1 - Planning",
         "Programming Language :: Python :: 3",
