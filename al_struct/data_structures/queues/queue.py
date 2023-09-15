@@ -13,7 +13,7 @@ class Queue:
         values = []
         temp = self._front
         while temp:
-            values.append(str(temp.data))
+            values.append(str(temp.key))
             temp = temp.next
         del temp
         return " | ".join(values)
@@ -40,7 +40,7 @@ class Queue:
         if self._current:
             current = self._current
             self._current = self._current.next
-            return current.data
+            return current.key
         else:
             raise StopIteration
 

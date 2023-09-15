@@ -13,7 +13,7 @@ class SinglyLinkedList:
         values = []
         temp = self._head
         while temp:
-            values.append(str(temp.data))
+            values.append(str(temp.key))
             temp = temp.next
         del temp
         return " -> ".join(values)
@@ -40,7 +40,7 @@ class SinglyLinkedList:
         if self._current:
             current = self._current
             self._current = self._current.next
-            return current.data
+            return current.key
         else:
             raise StopIteration
 
@@ -81,7 +81,7 @@ class SinglyLinkedList:
         """
         if not self._head:
             raise EmptyListException()
-        return self._head.data
+        return self._head.key
 
     def get_tail(self):
         """
@@ -93,7 +93,7 @@ class SinglyLinkedList:
         temp = self._head
         while temp.next:
             temp = temp.next
-        return temp.data
+        return temp.key
 
     def get(self, data):
         """
@@ -103,7 +103,7 @@ class SinglyLinkedList:
         """
         temp = self._head
         while temp:
-            if temp.data == data:
+            if temp.key == data:
                 return temp
             temp = temp.next
         return None
@@ -116,7 +116,7 @@ class SinglyLinkedList:
         """
         temp = self._head
         while temp:
-            if temp.data == data:
+            if temp.key == data:
                 return True
             temp = temp.next
         return False
@@ -131,7 +131,7 @@ class SinglyLinkedList:
         index = 0
         temp = self._head
         while temp:
-            if temp.data == data:
+            if temp.key == data:
                 return index
             temp = temp.next
             index += 1
@@ -144,14 +144,14 @@ class SinglyLinkedList:
         """
         if not self._head:
             raise EmptyListException()
-        if self._head.data == data:
+        if self._head.key == data:
             temp = self._head
             self._head = self._head.next
             del temp
             return
         current = self._head
         while current.next:
-            if current.next.data == data:
+            if current.next.key == data:
                 temp = current.next
                 current.next = current.next.next
                 del temp

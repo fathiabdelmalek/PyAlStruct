@@ -12,7 +12,7 @@ class Stack:
         values = []
         temp = self._top
         while temp:
-            values.append(str(temp.data))
+            values.append(str(temp.key))
             temp = temp.next
         del temp
         return ", ".join(values)
@@ -39,7 +39,7 @@ class Stack:
         if self._current:
             current = self._current
             self._current = self._current.next
-            return current.data
+            return current.key
         else:
             raise StopIteration
 
@@ -67,7 +67,7 @@ class Stack:
         """
         if not self._top:
             raise EmptyStackException()
-        item = self._top.data
+        item = self._top.key
         temp = self._top
         self._top = self._top.next
         del temp
@@ -80,7 +80,7 @@ class Stack:
         """
         if not self._top:
             raise EmptyStackException()
-        return self._top.data
+        return self._top.key
 
     def size(self) -> int:
         """
