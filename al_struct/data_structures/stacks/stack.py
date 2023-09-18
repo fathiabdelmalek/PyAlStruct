@@ -1,4 +1,4 @@
-from al_struct.exceptions import EmptyStackException
+from utils.exceptions import EmptyStackException
 from al_struct.utils.nodes import Node
 
 

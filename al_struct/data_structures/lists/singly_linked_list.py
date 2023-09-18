@@ -1,4 +1,4 @@
-from al_struct.exceptions import NodeNotFoundException, EmptyListException
+from utils.exceptions import NodeNotFoundException, EmptyListException
 from al_struct.utils.nodes import Node
 
 

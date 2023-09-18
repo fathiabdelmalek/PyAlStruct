@@ -1,4 +1,4 @@
-from al_struct.exceptions import EmptyQueueException
+from utils.exceptions import EmptyQueueException
 from al_struct.utils.nodes import Node
 
 
