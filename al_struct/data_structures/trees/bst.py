@@ -74,10 +74,11 @@ class BinarySearchTree:
         Perform a preorder traversal of the binary search tree.
         """
         def _pre_order(node):
-            print(node.key, end=', ')
-            _pre_order(node.left)
-            _pre_order(node.right)
-        if not self.is_empty():
+            if node:
+                print(node.key, end=', ')
+                _pre_order(node.left)
+                _pre_order(node.right)
+        if self._root is not None:
             _pre_order(self._root)
             print("end")
 
@@ -86,10 +87,11 @@ class BinarySearchTree:
         Perform an inorder traversal of the binary search tree.
         """
         def _in_order(node):
-            _in_order(node.left)
-            print(node.key, end=', ')
-            _in_order(node.right)
-        if not self.is_empty():
+            if node:
+                _in_order(node.left)
+                print(node.key, end=', ')
+                _in_order(node.right)
+        if self._root is not None:
             _in_order(self._root)
             print("end")
 
@@ -98,10 +100,11 @@ class BinarySearchTree:
         Perform a postorder traversal of the binary search tree.
         """
         def _post_order(node):
-            _post_order(node.left)
-            _post_order(node.right)
-            print(node.key, end=', ')
-        if not self.is_empty():
+            if node:
+                _post_order(node.left)
+                _post_order(node.right)
+                print(node.key, end=', ')
+        if self._root is not None:
             _post_order(self._root)
             print("end")
 
@@ -114,9 +117,12 @@ class BinarySearchTree:
             if root is None:
                 return TreeNode(key)
             if key < root.key:
-                return _insert(root.left, key)
-            elif key > root.key:
-                return _insert(root.right, key)
+                node = _insert(root.left, key)
+                root.left = node
+                return root
+            node = _insert(root.right, key)
+            root.right = node
+            return root
         self._root = _insert(self._root, key)
         self._number_of_nodes += 1
 
@@ -180,6 +186,6 @@ class BinarySearchTree:
                 root.right = _delete(root.right, root.key)
             return root
 
-        if not self.is_empty():
+        if self._root is not None:
             self._root = _delete(self._root, key)
             self._number_of_nodes -= 1

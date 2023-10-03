@@ -6,7 +6,7 @@ class BinarySearch:
     Apply binary search for a target in an array.
     Default sort algorithm is selection sort.
     """
-    def __init__(self, array, sort='selection'):
+    def __init__(self, array, sort='quick'):
         match sort:
             case 'selection':
                 self._sort = SelectionSort()
@@ -14,6 +14,10 @@ class BinarySearch:
                 self._sort = InsertionSort()
             case 'bubble':
                 self._sort = BubbleSort()
+            case 'merge':
+                self._sort = MergeSort()
+            case 'quick':
+                self._sort = QuickSort()
         self._array = self._sort.sort(array)
 
     @property

@@ -20,7 +20,7 @@ class MergeSort:
 
     def sort(self, arr):
         """
-        Perform bubble sort on the input list 'arr' in-place.
+        Perform quick sort on the input list 'arr' in-place.
 
         :param arr: The input list to be sorted.
         :return: arr -- The sorted array.
