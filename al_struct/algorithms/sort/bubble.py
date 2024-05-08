@@ -1,5 +1,8 @@
+from typing import Any, List
+
+
 class BubbleSort:
-    def sort(self, arr):
+    def sort(self, arr: iter(Any)) -> iter(Any):
         """
         Perform bubble sort on the input list 'arr' in-place.
 
@@ -12,7 +15,6 @@ class BubbleSort:
         for i in range(n - 1):
             # Flag to check if any swaps were made in this pass
             swapped = False
-
             # Last i elements are already in place, so we don't need to check them
             for j in range(0, n - i - 1):
                 if sorted_arr[j] > sorted_arr[j + 1]:

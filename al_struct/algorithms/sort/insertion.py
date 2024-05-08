@@ -1,5 +1,8 @@
+from typing import Any
+
+
 class InsertionSort:
-    def sort(self, arr):
+    def sort(self, arr: iter(Any)) -> iter(Any):
         """
         Perform insertion sort on the input list 'arr' in-place.
 

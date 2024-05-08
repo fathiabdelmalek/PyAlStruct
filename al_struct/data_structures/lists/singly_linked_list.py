@@ -1,4 +1,6 @@
-from utils.exceptions import NodeNotFoundException, EmptyListException
+from typing import Any
+
+from al_struct.utils.exceptions import NodeNotFoundException, EmptyListException
 from al_struct.utils.nodes import Node
 
 
@@ -51,7 +53,7 @@ class SinglyLinkedList:
         """
         return self._head is None
 
-    def prepend(self, data):
+    def prepend(self, data: Any) -> None:
         """
         Add a new node with data to the beginning of the list.
         :param data: The data to be added to the list.
@@ -60,7 +62,7 @@ class SinglyLinkedList:
         node.next = self._head
         self._head = node
 
-    def append(self, data):
+    def append(self, data: Any) -> None:
         """
         Add a new node with data to the end of the list.
         :param data: The data to be added to the list.
@@ -74,7 +76,7 @@ class SinglyLinkedList:
             temp = temp.next
         temp.next = node
 
-    def get_head(self):
+    def get_head(self) -> Any:
         """
         Get data of the first node in the list.
         :return: The data of the first node in the list.
@@ -83,7 +85,7 @@ class SinglyLinkedList:
             raise EmptyListException()
         return self._head.key
 
-    def get_tail(self):
+    def get_tail(self) -> Any:
         """
         Get data of the last node in the list.
         :return: The data of the last node in the list.
@@ -95,7 +97,7 @@ class SinglyLinkedList:
             temp = temp.next
         return temp.key
 
-    def get(self, data):
+    def get(self, data: Any) -> Any:
         """
         Return the node that contains data if exist in the list.
         :param data: The data to search for.
@@ -108,7 +110,7 @@ class SinglyLinkedList:
             temp = temp.next
         return None
 
-    def search(self, data) -> bool:
+    def search(self, data: Any) -> bool:
         """
         Return boolean value if data exists in the list.
         :param data: The data to search for.
@@ -121,7 +123,7 @@ class SinglyLinkedList:
             temp = temp.next
         return False
 
-    def index(self, data) -> int:
+    def index(self, data: Any) -> int:
         """
         Find the index of the first occurrence of data in the linked list.
         :param data: The data to search for in the list.
@@ -137,7 +139,7 @@ class SinglyLinkedList:
             index += 1
         raise NodeNotFoundException(data)
 
-    def delete(self, data):
+    def delete(self, data: Any) -> None:
         """
         Delete the first occurrence of data in the linked list.
         :param data: The data to be deleted

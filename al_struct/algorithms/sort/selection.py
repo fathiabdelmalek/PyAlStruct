@@ -1,5 +1,8 @@
+from typing import Any
+
+
 class SelectionSort:
-    def sort(self, arr):
+    def sort(self, arr: iter(Any)) -> iter(Any):
         """
         Perform selection sort on the input list 'arr' in-place.
 

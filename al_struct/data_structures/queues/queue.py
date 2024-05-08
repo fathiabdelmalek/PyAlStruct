@@ -1,3 +1,5 @@
+from typing import Any
+
 from utils.exceptions import EmptyQueueException
 from al_struct.utils.nodes import Node
 
@@ -51,7 +53,7 @@ class Queue:
         """
         return self._front is None
 
-    def enqueue(self, item):
+    def enqueue(self, item: Any) -> None:
         """
         Add a new node with item to the back of the queue.
         :param item: The item to be added to the queue.
@@ -64,7 +66,7 @@ class Queue:
         self._back.next = node
         self._back = node
 
-    def dequeue(self):
+    def dequeue(self) -> None:
         """
         Removes and returns an item from the front of the queue.
         :return: The item at the front of the queue if exists.
@@ -80,7 +82,7 @@ class Queue:
         del temp
         return data
 
-    def size(self):
+    def size(self) -> int:
         """
         Return The size of the queue.
         :return: int -- The size of the queue.

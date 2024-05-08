@@ -1,7 +1,10 @@
+from typing import Any
+
+
 class Node:
     """Basic node for linked data structures."""
 
-    def __init__(self, data=None, next_node: 'Node' = None):
+    def __init__(self, data: Any = None, next_node: 'Node' = None):
         """
         Initialize a new node.
         :param data: The data to be stored in the node.
@@ -16,11 +19,11 @@ class Node:
         return False
 
     @property
-    def data(self):
+    def data(self) -> Any:
         return self._data
 
     @data.setter
-    def data(self, data):
+    def data(self, data: Any) -> None:
         self._data = data
 
     @property
@@ -28,7 +31,7 @@ class Node:
         return self._next
 
     @next.setter
-    def next(self, ptr: 'Node'):
+    def next(self, ptr: 'Node') -> None:
         if not isinstance(ptr, (Node, type(None))):
             raise TypeError("The pointer should be a Node or None")
         self._next = ptr
@@ -36,7 +39,7 @@ class Node:
 
 class BinaryNode:
     """Node for double side linked data structures"""
-    def __init__(self, data=None, prev_node: 'BinaryNode' = None, next_node: 'BinaryNode' = None):
+    def __init__(self, data: Any = None, prev_node: 'BinaryNode' = None, next_node: 'BinaryNode' = None):
         """
         Initialize a new node.
         :param data: The data to be stored in the node.
@@ -53,11 +56,11 @@ class BinaryNode:
         return False
 
     @property
-    def data(self):
+    def data(self) -> Any:
         return self._data
 
     @data.setter
-    def data(self, data):
+    def data(self, data: Any) -> None:
         self._data = data
 
     @property
@@ -65,7 +68,7 @@ class BinaryNode:
         return self._prev
 
     @prev.setter
-    def prev(self, ptr: 'BinaryNode'):
+    def prev(self, ptr: 'BinaryNode') -> None:
         if not isinstance(ptr, (BinaryNode, type(None))):
             raise TypeError("The pointer should be a BinaryNode or None")
         self._prev = ptr
@@ -75,7 +78,7 @@ class BinaryNode:
         return self._next
 
     @next.setter
-    def next(self, ptr: 'BinaryNode'):
+    def next(self, ptr: 'BinaryNode') -> None:
         if not isinstance(ptr, (BinaryNode, type(None))):
             raise TypeError("The pointer should be a BinaryNode or None")
         self._next = ptr
@@ -84,7 +87,7 @@ class BinaryNode:
 class TreeNode:
     """Node for binary tree based linked data structures"""
 
-    def __init__(self, key=None, left_node: 'TreeNode' = None, right_node: 'TreeNode' = None):
+    def __init__(self, key: Any = None, left_node: 'TreeNode' = None, right_node: 'TreeNode' = None):
         """
         Initialize a new node.
         :param key: The data to be stored in the node.
@@ -101,11 +104,11 @@ class TreeNode:
         return False
 
     @property
-    def key(self):
+    def key(self) -> Any:
         return self._key
 
     @key.setter
-    def key(self, data):
+    def key(self, data: Any) -> None:
         self._key = data
 
     @property
@@ -113,7 +116,7 @@ class TreeNode:
         return self._left
 
     @left.setter
-    def left(self, ptr: 'TreeNode'):
+    def left(self, ptr: 'TreeNode') -> None:
         if not isinstance(ptr, (TreeNode, type(None))):
             raise TypeError("The pointer should be a TreeNode or None")
         self._left = ptr
@@ -123,7 +126,7 @@ class TreeNode:
         return self._right
 
     @right.setter
-    def right(self, ptr: 'TreeNode'):
+    def right(self, ptr: 'TreeNode') -> None:
         if not isinstance(ptr, (TreeNode, type(None))):
             raise TypeError("The pointer should be a TreeNode or None")
         self._right = ptr

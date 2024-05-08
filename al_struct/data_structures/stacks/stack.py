@@ -1,3 +1,5 @@
+from typing import Any
+
 from utils.exceptions import EmptyStackException
 from al_struct.utils.nodes import Node
 
@@ -50,7 +52,7 @@ class Stack:
         """
         return self._top is None
 
-    def push(self, item):
+    def push(self, item: Any) -> None:
         """
         Add a new item to the top of the stack.
         :param item: The item to be added to the stack.
@@ -59,7 +61,7 @@ class Stack:
         node.next = self._top
         self._top = node
 
-    def pop(self):
+    def pop(self) -> None:
         """
         Removes and returns an item from the top of the stack.
         :return: The item at the top of the stack if exists.
@@ -73,7 +75,7 @@ class Stack:
         del temp
         return item
 
-    def peek(self):
+    def peek(self) -> Any:
         """
         Return the item in the top of the stack without removing it.
         :return: The item of the node at the top of the stack.

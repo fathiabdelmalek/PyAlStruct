@@ -1,5 +1,8 @@
+from typing import Any
+
+
 class MergeSort:
-    def _merge(self, arr, left_side, right_side):
+    def _merge(self, arr: iter(Any), left_side: iter(Any), right_side: iter(Any)) -> None:
         i, j, k = 0, 0, 0
         while i < len(left_side) and j < len(right_side):
             if left_side[i] < right_side[j]:
@@ -18,7 +21,7 @@ class MergeSort:
             j += 1
             k += 1
 
-    def sort(self, arr):
+    def sort(self, arr: iter(Any)) -> iter(Any):
         """
         Perform quick sort on the input list 'arr' in-place.
 

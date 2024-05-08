@@ -1,3 +1,5 @@
+from typing import Any
+
 from al_struct.utils.nodes import TreeNode
 
 
@@ -43,7 +45,7 @@ class BinarySearchTree:
         return _height(self._root)
 
     @property
-    def min(self):
+    def min(self) -> Any:
         """
         Returns the minimum value in the tree.
         """
@@ -53,7 +55,7 @@ class BinarySearchTree:
         return temp.key
 
     @property
-    def max(self):
+    def max(self) -> Any:
         """
         Returns the maximum value in the tree.
         """
@@ -69,7 +71,7 @@ class BinarySearchTree:
         """
         return self._root is None
 
-    def pre_order(self):
+    def pre_order(self) -> None:
         """
         Perform a preorder traversal of the binary search tree.
         """
@@ -82,7 +84,7 @@ class BinarySearchTree:
             _pre_order(self._root)
             print("end")
 
-    def in_order(self):
+    def in_order(self) -> None:
         """
         Perform an inorder traversal of the binary search tree.
         """
@@ -95,7 +97,7 @@ class BinarySearchTree:
             _in_order(self._root)
             print("end")
 
-    def post_order(self):
+    def post_order(self) -> None:
         """
         Perform a postorder traversal of the binary search tree.
         """
@@ -108,38 +110,40 @@ class BinarySearchTree:
             _post_order(self._root)
             print("end")
 
-    def insert(self, key):
+    def insert(self, key: Any) -> None:
         """
         Insert new key to the tree if it's not exist.
         :param key: the key to be inserted.
         """
-        def _insert(root, key):
+        def _insert(root, _key) -> TreeNode:
             if root is None:
-                return TreeNode(key)
-            if key < root.key:
-                node = _insert(root.left, key)
+                return TreeNode(_key)
+            if _key == root.key:
+                raise ValueError(f'Key {_key} already exists')
+            if _key < root.key:
+                node = _insert(root.left, _key)
                 root.left = node
                 return root
-            node = _insert(root.right, key)
+            node = _insert(root.right, _key)
             root.right = node
             return root
         self._root = _insert(self._root, key)
         self._number_of_nodes += 1
 
-    def get(self, key) -> 'TreeNode':
+    def get(self, key) -> TreeNode:
         """
         Return the node that contains key if exist in the tree.
         :param key: The key to search for.
         :return: TreeNode -- The node that contains key if exists, otherwise None.
         """
-        def _search(root, key):
+        def _search(root, _key):
             if root is None:
                 return None
-            if root.key == key:
+            if root.key == _key:
                 return root
-            if key < root.key:
-                return _search(root.left, key)
-            return _search(root.right, key)
+            if _key < root.key:
+                return _search(root.left, _key)
+            return _search(root.right, _key)
         return _search(self._root, key)
 
     def search(self, key) -> bool:
@@ -148,19 +152,19 @@ class BinarySearchTree:
         :param key: The key to search for.
         :return: bool -- True if key exists in the tree, otherwise False.
         """
-        def _search(root, key):
+        def _search(root, _key):
             if root is None:
                 return False
-            if root.key == key:
+            if root.key == _key:
                 return True
-            if key < root.key:
-                return _search(root.left, key)
-            return _search(root.right, key)
+            if _key < root.key:
+                return _search(root.left, _key)
+            return _search(root.right, _key)
         if self.is_empty():
             return False
         return _search(self._root, key)
 
-    def delete(self, key):
+    def delete(self, key: Any) -> None:
         """
         Delete a key from the tree.
         :param key: The key to be added.
@@ -170,13 +174,13 @@ class BinarySearchTree:
                 node = node.left
             return node
 
-        def _delete(root, key):
+        def _delete(root, _key):
             if root is None:
                 return root
-            if key < root.key:
-                root.left = _delete(root.left, key)
-            elif key > root.key:
-                root.right = _delete(root.right, key)
+            if _key < root.key:
+                root.left = _delete(root.left, _key)
+            elif _key > root.key:
+                root.right = _delete(root.right, _key)
             else:
                 if root.left is None:
                     return root.right
