@@ -45,6 +45,7 @@ class SortedLinkedList(BaseLinkedList):
             node.next = temp
             return
         temp.next = node
+        self._size += 1
 
     def get_tail(self) -> Any:
         """
