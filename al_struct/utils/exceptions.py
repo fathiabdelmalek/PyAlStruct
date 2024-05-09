@@ -17,3 +17,8 @@ class EmptyStackException(Exception):
 class EmptyQueueException(Exception):
     def __init__(self):
         super().__init__("Queue is empty")
+
+
+class EmptyTreeException(Exception):
+    def __init__(self):
+        super().__init__("Tree is empty")

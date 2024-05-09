@@ -5,34 +5,44 @@ from al_struct.utils.nodes import Node
 from al_struct.data_structures.lists.base_linked_list import BaseLinkedList
 
 
-class SinglyLinkedList(BaseLinkedList):
-    """Singly linked list data structure."""
+class DoublyLinkedList(BaseLinkedList):
+    """Doubly Linked List data structure."""
 
     def __init__(self):
-        """Initialize an empty singly linked list."""
+        """Initialize empty doubly linked list."""
         super().__init__()
+        self._tail: Node | None = None
 
     def __str__(self):
         values = []
-        temp: Node = self._head
+        temp= self._head
         while temp:
-            values.append(str(temp.data))
+            values.append(str(temp.key))
             temp = temp.next
         del temp
-        return " -> ".join(values)
+        return " <-> ".join(values)
 
     def __repr__(self):
-        return f"PyAlStruct.SinglyLinkedList({str(self)})"
+        return f"PyAlStruct.DoublyLinkedList({str(self)})"
+
+    def is_empty(self) -> bool:
+        """
+        Check if the linked list is empty.
+        :returns: bool -- True if the linked list is empty, otherwise False.
+        """
+        return self._head is None
 
     def prepend(self, data: Any) -> None:
         """
-        Add a new node with data to the beginning of the list.
+        Add a new node with data to the end of the list.
         :param data: The data to be added to the list.
         """
-        node: Node = Node(data)
+        node = Node(data)
         if self._head is not None:
             node.next = self._head
         self._head = node
+        if self._head is None:
+            self._tail = self._head
         self._size += 1
 
     def append(self, data: Any) -> None:
@@ -40,14 +50,13 @@ class SinglyLinkedList(BaseLinkedList):
         Add a new node with data to the end of the list.
         :param data: The data to be added to the list.
         """
-        node: Node = Node(data)
-        if not self._head:
+        node = Node(data)
+        if self._head is None:
             self._head = node
-            return
-        temp = self._head
-        while temp.next:
-            temp = temp.next
-        temp.next = node
+            self._tail = node
+        else:
+            self._tail.next = node
+            self._tail = node
         self._size += 1
 
     def get_tail(self) -> Any:
@@ -55,9 +64,6 @@ class SinglyLinkedList(BaseLinkedList):
         Get data of the last node in the list.
         :return: The data of the last node in the list.
         """
-        if not self._head:
+        if self._tail is None:
             raise EmptyListException()
-        temp: Node = self._head
-        while temp.next:
-            temp = temp.next
-        return temp.data
+        return self._tail.data

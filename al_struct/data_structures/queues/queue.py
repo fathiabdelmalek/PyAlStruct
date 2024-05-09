@@ -8,14 +8,16 @@ class Queue:
     """Simple queue data structure."""
 
     def __init__(self):
-        self._front = None
-        self._back = None
+        """Initialize the queue with an empty stack."""
+        self._front: Node | None = None
+        self._back: Node | None = None
+        self._size: int = 0
 
     def __str__(self):
         values = []
-        temp = self._front
+        temp: Node = self._front
         while temp:
-            values.append(str(temp.key))
+            values.append(str(temp.data))
             temp = temp.next
         del temp
         return " | ".join(values)
@@ -25,12 +27,7 @@ class Queue:
 
     def __len__(self):
         """Return len(self)"""
-        size = 0
-        tmep = self._front
-        while tmep:
-            size += 1
-            tmep = tmep.next
-        return size
+        return self._size
 
     def __iter__(self):
         """Initialize an iterator over the linked list."""
@@ -42,9 +39,13 @@ class Queue:
         if self._current:
             current = self._current
             self._current = self._current.next
-            return current.key
+            return current.data
         else:
             raise StopIteration
+
+    @property
+    def size(self) -> int:
+        return self._size
 
     def is_empty(self) -> bool:
         """
@@ -58,7 +59,7 @@ class Queue:
         Add a new node with item to the back of the queue.
         :param item: The item to be added to the queue.
         """
-        node = Node(item)
+        node: Node = Node(item)
         if self._front is None:
             self._front = node
             self._back = node
@@ -76,20 +77,8 @@ class Queue:
             raise EmptyQueueException()
         if self._front == self._back:
             self._front = None
-        data = self._front.data
-        temp = self._front
+        data: Any = self._front.data
+        temp: Node = self._front
         self._front = self._front.next
         del temp
         return data
-
-    def size(self) -> int:
-        """
-        Return The size of the queue.
-        :return: int -- The size of the queue.
-        """
-        size = 0
-        tmep = self._front
-        while tmep:
-            size += 1
-            tmep = tmep.next
-        return size

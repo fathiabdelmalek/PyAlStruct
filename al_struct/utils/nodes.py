@@ -10,8 +10,8 @@ class Node:
         :param data: The data to be stored in the node.
         :param next_node: The next node in the linked structure.
         """
-        self._data = data
-        self._next = next_node
+        self._data: Any = data
+        self._next: Node = next_node
 
     def __eq__(self, other: 'Node'):
         if isinstance(other, Node):
@@ -46,9 +46,9 @@ class BinaryNode:
         :param prev_node: The previous node
         :param next_node: The next node
         """
-        self._data = data
-        self._prev = prev_node
-        self._next = next_node
+        self._data: Any = data
+        self._prev: 'BinaryNode' = prev_node
+        self._next: 'BinaryNode' = next_node
 
     def __eq__(self, other: 'BinaryNode'):
         if isinstance(other, BinaryNode):
@@ -94,9 +94,9 @@ class TreeNode:
         :param left_node: The previous node
         :param right_node: The next node
         """
-        self._key = key
-        self._left = left_node
-        self._right = right_node
+        self._key: Any = key
+        self._left: 'TreeNode' = left_node
+        self._right: 'TreeNode' = right_node
 
     def __eq__(self, other: 'TreeNode'):
         if isinstance(other, TreeNode):

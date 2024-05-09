@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='PyAlStruct',
-    version='0.9.0',
+    version='0.10.0',
     author='Fathi Abdelmalek',
     author_email='abdelmalek.fathi.2001@gmail.com',
     url='https://github.com/fathiabdelmalek/PyAlStruct',

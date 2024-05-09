@@ -8,11 +8,12 @@ class Stack:
     """Simple stack data structure."""
 
     def __init__(self):
-        self._top = None
+        self._top: Node = None
+        self._size: int = 0
 
     def __str__(self):
         values = []
-        temp = self._top
+        temp: Node = self._top
         while temp:
             values.append(str(temp.key))
             temp = temp.next
@@ -24,12 +25,7 @@ class Stack:
 
     def __len__(self):
         """Return len(self)"""
-        size = 0
-        tmep = self._top
-        while tmep:
-            size += 1
-            tmep = tmep.next
-        return size
+        return self._size
 
     def __iter__(self):
         """Initialize an iterator over the linked list."""
@@ -41,9 +37,13 @@ class Stack:
         if self._current:
             current = self._current
             self._current = self._current.next
-            return current.key
+            return current.data
         else:
             raise StopIteration
+
+    @property
+    def size(self) -> int:
+        return self._size
 
     def is_empty(self) -> bool:
         """
@@ -57,9 +57,10 @@ class Stack:
         Add a new item to the top of the stack.
         :param item: The item to be added to the stack.
         """
-        node = Node(item)
+        node: Node = Node(item)
         node.next = self._top
         self._top = node
+        self._size += 1
 
     def pop(self) -> None:
         """
@@ -67,12 +68,13 @@ class Stack:
         :return: The item at the top of the stack if exists.
         :raise EmptyStackException: If the stack is empty.
         """
-        if not self._top:
+        if self._top is None:
             raise EmptyStackException()
-        item = self._top.key
+        item = self._top.data
         temp = self._top
         self._top = self._top.next
         del temp
+        self._size -= 1
         return item
 
     def peek(self) -> Any:
@@ -82,16 +84,4 @@ class Stack:
         """
         if not self._top:
             raise EmptyStackException()
-        return self._top.key
-
-    def size(self) -> int:
-        """
-        Return The size of the stack.
-        :return: int -- The size of the stack.
-        """
-        size = 0
-        tmep = self._top
-        while tmep:
-            size += 1
-            tmep = tmep.next
-        return size
+        return self._top.data
