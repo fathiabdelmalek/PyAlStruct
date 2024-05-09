@@ -1,6 +1,6 @@
 from typing import Any
 
-from al_struct.utils.exceptions import NodeNotFoundException, EmptyListException
+from al_struct.utils.exceptions import EmptyListException, NodeNotFoundException
 from al_struct.utils.nodes import Node
 
 

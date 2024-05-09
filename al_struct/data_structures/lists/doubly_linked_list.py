@@ -1,8 +1,8 @@
 from typing import Any
 
+from al_struct.data_structures.lists.base_linked_list import BaseLinkedList
 from al_struct.utils.exceptions import EmptyListException
 from al_struct.utils.nodes import Node
-from al_struct.data_structures.lists.base_linked_list import BaseLinkedList
 
 
 class DoublyLinkedList(BaseLinkedList):

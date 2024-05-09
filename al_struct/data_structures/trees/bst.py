@@ -1,7 +1,7 @@
 from typing import Any
 
+from al_struct.utils.exceptions import EmptyTreeException, NodeNotFoundException
 from al_struct.utils.nodes import TreeNode
-from al_struct.utils.exceptions import NodeNotFoundException, EmptyTreeException
 
 
 class BinarySearchTree:
@@ -10,6 +10,12 @@ class BinarySearchTree:
         """Initialize an empty binary search tree."""
         self._root: TreeNode | None = None
         self._number_of_nodes: int = 0
+
+    def __str__(self):
+        return self.pre_order()
+
+    def __repr__(self):
+        return f"PyAlStruct.BinarySearchTree({str(self)})"
 
     def __len__(self):
         """Return len(self)"""

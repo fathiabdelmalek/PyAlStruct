@@ -1,6 +1,6 @@
 from typing import Any
 
-from utils.exceptions import EmptyQueueException
+from al_struct.utils.exceptions import EmptyQueueException
 from al_struct.utils.nodes import Node
 
 

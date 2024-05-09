@@ -5,11 +5,9 @@ from al_struct.utils.exceptions import EmptyListException
 from al_struct.utils.nodes import Node
 
 
-class SinglyLinkedList(BaseLinkedList):
-    """Singly linked list data structure."""
+class SortedLinkedList(BaseLinkedList):
 
     def __init__(self):
-        """Initialize an empty singly linked list."""
         super().__init__()
 
     def __str__(self):
@@ -22,33 +20,31 @@ class SinglyLinkedList(BaseLinkedList):
         return " -> ".join(values)
 
     def __repr__(self):
-        return f"PyAlStruct.SinglyLinkedList({str(self)})"
-
-    def prepend(self, data: Any) -> None:
-        """
-        Add a new node with data to the beginning of the list.
-        :param data: The data to be added to the list.
-        """
-        node: Node = Node(data)
-        if self._head is not None:
-            node.next = self._head
-        self._head = node
-        self._size += 1
+        return f"PyAlStruct.SortedLinkedList({str(self)})"
 
     def append(self, data: Any) -> None:
         """
-        Add a new node with data to the end of the list.
+        Add a new node with data to the list, it will be sorted automatically.
         :param data: The data to be added to the list.
         """
         node: Node = Node(data)
-        if not self._head:
+        if self._head is None:
             self._head = node
             return
-        temp = self._head
-        while temp.next:
+        if data < self._head.data or data == self._head.data:
+            node.next = self._head
+            self._head = node
+            return
+        temp: Node = self._head
+        current: Node | None = None
+        while temp.next and data > temp.data:
+            current = temp
             temp = temp.next
+        if data <= temp.data:
+            current.next = node
+            node.next = temp
+            return
         temp.next = node
-        self._size += 1
 
     def get_tail(self) -> Any:
         """

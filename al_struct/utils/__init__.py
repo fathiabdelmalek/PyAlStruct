@@ -1,7 +1,7 @@
-from .nodes import Node, BinaryNode, TreeNode
+from al_struct.utils.nodes import Node, BinaryNode, TreeNode
 
 
-def compare_nodes(node1: Node | BinaryNode, node2: Node | BinaryNode | TreeNode) -> bool:
+def compare_nodes(node1: Node | BinaryNode | TreeNode, node2: Node | BinaryNode | TreeNode) -> bool:
     """
     Compare two Node instances.
 
