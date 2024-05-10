@@ -1,7 +1,7 @@
 from typing import Any
 
 from al_struct.utils.exceptions import EmptyListException, NodeNotFoundException
-from al_struct.utils.nodes import Node
+from al_struct.utils.nodes import Node, BinaryNode
 
 
 class BaseLinkedList:
@@ -56,12 +56,26 @@ class BaseLinkedList:
         :param data: The data to search for.
         :return: Node -- The node that contains data if exists.
         """
-        temp: Node = self._head
-        while temp:
+        temp: Node | BinaryNode = self._head
+        while temp is not None:
             if temp.data == data:
                 return temp
             temp = temp.next
         raise NodeNotFoundException(data)
+
+    def get_all(self, data: Any) -> list[Any]:
+        """
+        Return a list of all the nodes data that contain data if exist in the list.
+        :param data: The data to search for.
+        :return: list[Any] -- List of all the nodes data that contain data in the list.
+        """
+        nodes: list[Any] = []
+        temp: Node | BinaryNode = self._head
+        while temp is not None:
+            if temp.data == data:
+                nodes.append(temp.data)
+            temp = temp.next
+        return nodes
 
     def search(self, data: Any) -> bool:
         """
@@ -70,7 +84,7 @@ class BaseLinkedList:
         :return: bool -- True if data exists, otherwise False.
         :raises NodeNotFoundException: If the data is not found in the linked list.
         """
-        temp: Node = self._head
+        temp: Node | BinaryNode = self._head
         while temp:
             if temp.data == data:
                 return True
@@ -79,34 +93,64 @@ class BaseLinkedList:
 
     def index(self, data: Any) -> int:
         """
-        Find the index of the first occurrence of data in the linked list.
+        Find the index of the first occurrence of data in the list.
         :param data: The data to search for in the list.
-        :returns: int -- The index of the first occurrence of the data.
-        :raises NodeNotFoundException: If the data is not found in the linked list.
+        :returns: int -- The index of the first occurrence of the data in the list.
+        :raises NodeNotFoundException: If the data is not found in the list.
         """
         index: int = 0
-        temp: Node = self._head
-        while temp:
+        temp: Node | BinaryNode = self._head
+        while temp is not None:
             if temp.data == data:
                 return index
             temp = temp.next
             index += 1
         raise NodeNotFoundException(data)
 
-    def delete(self, data: Any) -> None:
+    def indexes(self, data: Any) -> list[int]:
+        """
+        Find the indexes of the all occurrences of data in the list.
+        :param data: The data to search for in the list.
+        :return: list[int] -- List of indexes of all occurrences of the data in the list.
+        """
+        index: int = 0
+        indexes: list[int] = []
+        temp: Node | BinaryNode = self._head
+        while temp is not None:
+            if temp.data == data:
+                indexes.append(index)
+            temp = temp.next
+            index += 1
+        return indexes
+
+    def delete(self, data: Any) -> Any:
         """
         Delete the first occurrence of data in the linked list.
         :param data: The data to be deleted
         """
         if self._head is None:
             raise EmptyListException()
-        current: Node = self._head
-        while current:
-            if current.data == data:
-                temp: Node = current
-                current = current.next
+        if self._head.data == data:
+            temp: Node | BinaryNode = self._head
+            value: Any = self._head.data
+            self._head = self._head.next
+            if type(self._head) is BinaryNode:
+                self._head.prev = None
+            del temp
+            self._size -= 1
+            return value
+        current: Node | BinaryNode = self._head
+        next_node: Node | BinaryNode = self._head.next
+        while next_node is not None:
+            if next_node.data == data:
+                temp: BinaryNode = next_node
+                value: Any = temp.data
+                current.next = next_node.next
+                if type(next_node.next) is BinaryNode:
+                    next_node.next.prev = current
                 del temp
                 self._size -= 1
-                return
+                return value
             current = current.next
+            next_node = next_node.next
         raise NodeNotFoundException(data)

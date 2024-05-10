@@ -1,5 +1,6 @@
 from typing import Any
 
+from al_struct.data_structures.stacks import Stack
 from al_struct.utils.exceptions import EmptyQueueException
 from al_struct.utils.nodes import Node
 
@@ -19,7 +20,6 @@ class Queue:
         while temp:
             values.append(str(temp.data))
             temp = temp.next
-        del temp
         return " | ".join(values)
 
     def __repr__(self):
@@ -82,3 +82,21 @@ class Queue:
         self._front = self._front.next
         del temp
         return data
+
+    def reverse(self) -> None:
+        """
+        Reverse the order of the queue.
+        """
+        stack = Stack()
+        while self.is_empty():
+            stack.push(self.dequeue())
+        while not stack.is_empty():
+            self.enqueue(stack.pop())
+
+    def circular_permutation(self, amount: int) -> None:
+        """
+        Perform a circular permutation on the queue with given amount.
+        :param amount: The amount to perform the circular permutation.
+        """
+        for i in range(amount):
+            self.enqueue(self.dequeue())

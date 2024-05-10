@@ -8,16 +8,15 @@ class Stack:
     """Simple stack data structure."""
 
     def __init__(self):
-        self._top: Node = None
+        self._top: Node | None = None
         self._size: int = 0
 
     def __str__(self):
         values = []
         temp: Node = self._top
         while temp:
-            values.append(str(temp.key))
+            values.append(str(temp.data))
             temp = temp.next
-        del temp
         return ", ".join(values)
 
     def __repr__(self):
@@ -85,3 +84,28 @@ class Stack:
         if not self._top:
             raise EmptyStackException()
         return self._top.data
+
+    def reverse(self) -> None:
+        """
+        Reverse the order of the stack elements.
+        """
+        stack = Stack()
+        while not self.is_empty():
+            stack.push(self.pop())
+        self._top = stack._top
+
+    def circular_permutation(self, amount: int) -> None:
+        """
+        Perform a circular permutation on the stack with given amount.
+        :param amount: The amount to perform the circular permutation.
+        """
+        temp1: Stack = Stack()
+        temp2: Stack = Stack()
+        for i in range(amount):
+            temp1.push(self.pop())
+        while not self.is_empty():
+            temp2.push(self.pop())
+        while not temp1.is_empty():
+            self.push(temp1.pop())
+        while not temp2.is_empty():
+            self.push(temp2.pop())

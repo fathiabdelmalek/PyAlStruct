@@ -18,7 +18,6 @@ class SinglyLinkedList(BaseLinkedList):
         while temp:
             values.append(str(temp.data))
             temp = temp.next
-        del temp
         return " -> ".join(values)
 
     def __repr__(self):
@@ -61,3 +60,26 @@ class SinglyLinkedList(BaseLinkedList):
         while temp.next:
             temp = temp.next
         return temp.data
+
+    def reverse(self) -> None:
+        """
+        Reverse the order of the list.
+        """
+        if self._head is None:
+            raise EmptyListException()
+        previous: Node | None = None
+        current: Node = self._head
+        while current is not None:
+            temp: Node = current.next
+            current.next = previous
+            previous = current
+            current = temp
+        self._head = previous
+
+    def circular_permutation(self, amount: int) -> None:
+        """
+        Perform a circular permutation on the list with given amount.
+        :param amount: The amount to perform the circular permutation.
+        """
+        for i in range(amount):
+            self.append(self.delete(self.get_head()))
