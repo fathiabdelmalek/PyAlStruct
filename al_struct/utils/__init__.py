@@ -4,9 +4,8 @@ from al_struct.utils.nodes import Node, BinaryNode, TreeNode
 def compare_nodes(node1: Node | BinaryNode | TreeNode, node2: Node | BinaryNode | TreeNode) -> bool:
     """
     Compare two Node instances.
-
-    :param node1: The first Node|BinaryNode instance.
-    :param node2: The second Node|BinaryNode instance.
+    :param node1: The first Node|BinaryNode|TreeNode instance.
+    :param node2: The second Node|BinaryNode|TreeNode instance.
     :return: True if the nodes are equal, False otherwise.
     """
     if isinstance(node1, Node) and isinstance(node2, Node):

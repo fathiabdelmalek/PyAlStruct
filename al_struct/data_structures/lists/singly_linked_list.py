@@ -9,7 +9,6 @@ class SinglyLinkedList(BaseLinkedList):
     """Singly linked list data structure."""
 
     def __init__(self):
-        """Initialize an empty singly linked list."""
         super().__init__()
 
     def __str__(self):
@@ -42,6 +41,7 @@ class SinglyLinkedList(BaseLinkedList):
         node: Node = Node(data)
         if not self._head:
             self._head = node
+            self._size += 1
             return
         temp = self._head
         while temp.next:

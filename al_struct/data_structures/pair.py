@@ -5,7 +5,6 @@ class Pair:
     """Pair data structure."""
 
     def __init__(self, first: Any = None, second: Any = None):
-        """Initialize a Pair instance."""
         self.__first: Any = first
         self.__second: Any = second
 

@@ -7,18 +7,16 @@ from al_struct.utils.nodes import TreeNode
 class BinarySearchTree:
     """Binary search tree data structure."""
     def __init__(self):
-        """Initialize an empty binary search tree."""
         self._root: TreeNode | None = None
         self._number_of_nodes: int = 0
 
     def __str__(self):
-        return self.pre_order()
+        return str(self.pre_order())
 
     def __repr__(self):
         return f"PyAlStruct.BinarySearchTree({str(self)})"
 
     def __len__(self):
-        """Return len(self)"""
         return self._number_of_nodes
 
     @property

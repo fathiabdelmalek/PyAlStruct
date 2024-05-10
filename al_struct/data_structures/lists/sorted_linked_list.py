@@ -30,10 +30,12 @@ class SortedLinkedList(BaseLinkedList):
         node: Node = Node(data)
         if self._head is None:
             self._head = node
+            self._size += 1
             return
         if data < self._head.data or data == self._head.data:
             node.next = self._head
             self._head = node
+            self._size += 1
             return
         temp: Node = self._head
         current: Node | None = None
@@ -43,6 +45,7 @@ class SortedLinkedList(BaseLinkedList):
         if data <= temp.data:
             current.next = node
             node.next = temp
+            self._size += 1
             return
         temp.next = node
         self._size += 1

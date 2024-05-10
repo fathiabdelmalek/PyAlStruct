@@ -9,7 +9,6 @@ class Queue:
     """Simple queue data structure."""
 
     def __init__(self):
-        """Initialize the queue with an empty stack."""
         self._front: Node | None = None
         self._back: Node | None = None
         self._size: int = 0
@@ -26,16 +25,13 @@ class Queue:
         return f"PyAlStruct.Queue({str(self)})"
 
     def __len__(self):
-        """Return len(self)"""
         return self._size
 
     def __iter__(self):
-        """Initialize an iterator over the linked list."""
         self._current = self._front
         return self
 
     def __next__(self):
-        """Get the next element in the iteration."""
         if self._current:
             current = self._current
             self._current = self._current.next

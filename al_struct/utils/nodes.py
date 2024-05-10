@@ -41,7 +41,7 @@ class BinaryNode:
     """Node for double side linked data structures"""
     def __init__(self, data: Any = None, prev_node: 'BinaryNode' = None, next_node: 'BinaryNode' = None):
         """
-        Initialize a new node.
+        Initialize a new binary node.
         :param data: The data to be stored in the node.
         :param prev_node: The previous node
         :param next_node: The next node
@@ -89,7 +89,7 @@ class TreeNode:
 
     def __init__(self, key: Any = None, left_node: 'TreeNode' = None, right_node: 'TreeNode' = None):
         """
-        Initialize a new node.
+        Initialize a new tree node.
         :param key: The data to be stored in the node.
         :param left_node: The previous node
         :param right_node: The next node

@@ -1,7 +1,7 @@
 from typing import Any
 
 from al_struct.data_structures.lists.base_linked_list import BaseLinkedList
-from al_struct.utils.exceptions import EmptyListException, NodeNotFoundException
+from al_struct.utils.exceptions import EmptyListException
 from al_struct.utils.nodes import BinaryNode
 
 
@@ -9,7 +9,6 @@ class DoublyLinkedList(BaseLinkedList):
     """Doubly Linked List data structure."""
 
     def __init__(self):
-        """Initialize empty doubly linked list."""
         super().__init__()
         self._head: BinaryNode | None = None
         self._tail: BinaryNode | None = None

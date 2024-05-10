@@ -23,16 +23,13 @@ class Stack:
         return f"PyAlStruct.Stack({str(self)})"
 
     def __len__(self):
-        """Return len(self)"""
         return self._size
 
     def __iter__(self):
-        """Initialize an iterator over the linked list."""
         self._current = self._top
         return self
 
     def __next__(self):
-        """Get the next element in the iteration."""
         if self._current:
             current = self._current
             self._current = self._current.next
