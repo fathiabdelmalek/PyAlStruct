@@ -1,6 +1,10 @@
 from typing import Any
 
-from al_struct.algorithms.sort import *
+from al_struct.algorithms.sort.bubble import sort as bubblesort
+from al_struct.algorithms.sort.insertion import sort as insertionsort
+from al_struct.algorithms.sort.merge import sort as mergesort
+from al_struct.algorithms.sort.quick import sort as quicksort
+from al_struct.algorithms.sort.selection import sort as selectionsort
 
 
 class BinarySearch:
@@ -10,17 +14,16 @@ class BinarySearch:
     """
     def __init__(self, array: Any, sort: str = 'quick'):
         match sort:
-            case 'selection':
-                self._sort = SelectionSort()
-            case 'insertion':
-                self._sort = InsertionSort()
             case 'bubble':
-                self._sort = BubbleSort()
+                self._array = bubblesort(array)
             case 'merge':
-                self._sort = MergeSort()
+                self._array = mergesort(array)
             case 'quick':
-                self._sort = QuickSort()
-        self._array = self._sort.sort(array)
+                self._array = quicksort(array)
+            case 'insertion':
+                self._array = insertionsort(array)
+            case 'selection':
+                self._array = selectionsort(array)
 
     @property
     def array(self) -> Any:
