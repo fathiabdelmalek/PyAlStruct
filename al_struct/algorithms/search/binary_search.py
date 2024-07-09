@@ -16,12 +16,12 @@ class BinarySearch:
         match sort:
             case 'bubble':
                 self._array = bubblesort(array)
+            case 'insertion':
+                self._array = insertionsort(array)
             case 'merge':
                 self._array = mergesort(array)
             case 'quick':
                 self._array = quicksort(array)
-            case 'insertion':
-                self._array = insertionsort(array)
             case 'selection':
                 self._array = selectionsort(array)
 

@@ -1,7 +1,4 @@
-from typing import Any
-
-
-def _merge(arr: iter(Any), left_side: iter(Any), right_side: iter(Any)) -> None:
+def _merge(arr: iter, left_side: iter, right_side: iter) -> None:
     i, j, k = 0, 0, 0
     while i < len(left_side) and j < len(right_side):
         if left_side[i] < right_side[j]:
@@ -21,7 +18,7 @@ def _merge(arr: iter(Any), left_side: iter(Any), right_side: iter(Any)) -> None:
         k += 1
 
 
-def sort(arr: iter(Any)) -> iter(Any):
+def sort(arr: iter) -> iter:
     """
     Perform quick sort on the input list 'arr' in-place.
 

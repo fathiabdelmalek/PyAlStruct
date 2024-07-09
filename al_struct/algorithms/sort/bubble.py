@@ -1,7 +1,4 @@
-from typing import Any, List
-
-
-def sort(arr: iter(Any)) -> iter(Any):
+def sort(arr: iter) -> iter:
     """
     Perform bubble sort on the input list 'arr' in-place.
 

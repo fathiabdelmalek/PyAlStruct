@@ -1,7 +1,4 @@
-from typing import Any
-
-
-def _quick_sort(arr: iter(Any), low: int, high: int) -> None:
+def _quick_sort(arr: iter, low: int, high: int) -> None:
     """
     Helper function for quick sort.
     :param arr: The array to be sorted.
@@ -21,7 +18,7 @@ def _quick_sort(arr: iter(Any), low: int, high: int) -> None:
         _quick_sort(arr, pivot_index + 1, high)
 
 
-def sort(arr: iter(Any)) -> iter(Any):
+def sort(arr: iter) -> iter:
     """
     Perform quick sort on the input list 'arr' in-place.
 
