@@ -79,6 +79,15 @@ class Queue:
         del temp
         return data
 
+    def peek(self) -> Any:
+        """
+        Return the item in the front of the queue without removing it.
+        :return: The item of the node at the front of the queue.
+        """
+        if not self._front:
+            raise EmptyQueueException()
+        return self._front.data
+
     def reverse(self) -> None:
         """
         Reverse the order of the queue.
